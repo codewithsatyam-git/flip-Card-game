@@ -16,11 +16,11 @@ import orange from "../assets/orange.jpg";
 import watermelon from "../assets/watermelon.jpg";
 import GameOver from "./GameOver";
 
-const CardSection = ({score, setScore}) => {
+const CardSection = ({ score, setScore }) => {
   const [suffledCards, setSuffledCards] = useState([]);
   const [firstImg, setFirstImg] = useState("A");
   const [secondImg, setSecondImg] = useState("B");
-  const [gameOver, setGAmeOver] = useState(false)
+  const [gameOver, setGAmeOver] = useState(false);
   const [allFlipped, setAllFlipped] = useState(true);
   const [removeCorrect, setRemoveCorrect] = useState(false);
 
@@ -66,39 +66,44 @@ const CardSection = ({score, setScore}) => {
       secondImg !== "B" &&
       secondImg !== firstImg
     ) {
-      console.log("incorrect pair");
       setFirstImg("A");
       setSecondImg("B");
+      
+      
     }
   }, [secondImg]);
-  useEffect(()=>{
+  useEffect(() => {
     if (score == 140) {
-      setGAmeOver(!gameOver)
+      setGAmeOver(!gameOver);
     }
-  },[score])
+  }, [score]);
 
   return (
     <div className="w-full h-auto lg:p-4 lg:h-auto rounded bg-[#3A3A4F] flex flex-wrap justify-around ">
-      {gameOver ? <GameOver score={score} setScore={setScore}  /> : suffledCards.map((card, ind) => {
-        return (
-          <div
-            key={ind}
-            className=" lg:w-[80px] lg:h-[100px] w-18 h-20 m-1.5 rounded overflow-hidden"
-          >
-            <Card
-              firstImg={firstImg}
-              secondImg={secondImg}
-              setFirstImg={setFirstImg}
-              setSecondImg={setSecondImg}
-              allFlipped={allFlipped}
-              setAllFlipped={setAllFlipped}
-              removeCorrect={removeCorrect}
-              setRemoveCorrect={setRemoveCorrect}
-              img={card}
-            />
-          </div>
-        );
-      }) }
+      {gameOver ? (
+        <GameOver score={score} setScore={setScore} />
+      ) : (
+        suffledCards.map((card, ind) => {
+          return (
+            <div
+              key={ind}
+              className=" lg:w-[80px] lg:h-[100px] w-18 h-20 m-1.5 rounded overflow-hidden"
+            >
+              <Card
+                firstImg={firstImg}
+                secondImg={secondImg}
+                setFirstImg={setFirstImg}
+                setSecondImg={setSecondImg}
+                allFlipped={allFlipped}
+                setAllFlipped={setAllFlipped}
+                removeCorrect={removeCorrect}
+                setRemoveCorrect={setRemoveCorrect}
+                img={card}
+              />
+            </div>
+          );
+        })
+      )}
       {/* {suffledCards.map((card, ind) => {
         return (
           <div

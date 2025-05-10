@@ -13,7 +13,7 @@ const Card = ({
 }) => {
   const [flipped, setFlipped] = useState(false);
   const [displayCard, setDisplayCard] = useState("block");
-  const [disableCard, setDisableCard] = useState("auto")
+  const [disableCard, setDisableCard] = useState("auto");
   useEffect(() => {
     if (allFlipped == true) {
       setFlipped(false);
@@ -23,25 +23,28 @@ const Card = ({
     if (removeCorrect == true && flipped == true) {
       setTimeout(() => {
         setDisplayCard("none");
-      }, 1000);
+      }, 500);
       setRemoveCorrect(!removeCorrect);
     }
   }, [removeCorrect]);
-  useEffect(()=>{
+  useEffect(() => {
     if (flipped) {
-      setDisableCard("none")
+      setDisableCard("none");
     } else {
-      setDisableCard("auto")
+      setDisableCard("auto");
     }
-  },[flipped])
+  }, [flipped]);
+  console.log(flipped);
 
   return (
     <div
       onClick={(e) => {
         setFlipped(!flipped);
-        setTimeout(() => {
-          setAllFlipped(!allFlipped);
-        }, 500);
+        if (secondImg !== firstImg) {
+          setTimeout(() => {
+            setAllFlipped(!allFlipped);
+          }, 1000);
+        }
         if (firstImg === "A") {
           setFirstImg(img);
         } else {
@@ -60,7 +63,7 @@ const Card = ({
         style={{
           width: "100%",
           height: "100%",
-          transition: "transform 0.6s",
+          transition: "transform 1s",
           transformStyle: "preserve-3d",
           transform: flipped ? "rotateY(180deg)" : "rotateY(0deg)",
         }}
