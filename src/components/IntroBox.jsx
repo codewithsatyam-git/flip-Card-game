@@ -8,8 +8,8 @@ const IntroBox = () => {
     <motion.div animate={{
         y: start,
     }} transition={{
-        duration: 1,
-        delay: 0.5,
+        duration: 0.5,
+        delay: 0.1,
         ease: easeInOut,
     }} className="absolute w-[calc(100%-50px)] lg:w-1/2 h-1/2 bg-slate-900 text-white inset-1/2 -translate-1/2 rounded-lg p-3 ">
       <h2 className="w-full text-center text-lg font-semibold">

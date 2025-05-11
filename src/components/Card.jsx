@@ -23,7 +23,7 @@ const Card = ({
     if (removeCorrect == true && flipped == true) {
       setTimeout(() => {
         setDisplayCard("none");
-      }, 500);
+      }, 1000);
       setRemoveCorrect(!removeCorrect);
     }
   }, [removeCorrect]);
